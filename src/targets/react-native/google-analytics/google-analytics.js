@@ -2,7 +2,7 @@ function GoogleAnalytics(trackingId, GoogleAnalyticsTracker) {
   const tracker = new GoogleAnalyticsTracker(trackingId);
 
   function target(events) {
-    events.forEach((event) => {
+    events.forEach(event => {
       switch (event.hitType) {
         case 'event': {
           const options = {};
@@ -62,7 +62,11 @@ function GoogleAnalytics(trackingId, GoogleAnalyticsTracker) {
               options.label = event.timingLabel;
             }
 
-            tracker.trackTiming(event.timingCategory, event.timingValue, options);
+            tracker.trackTiming(
+              event.timingCategory,
+              event.timingValue,
+              options
+            );
           } else {
             tracker.trackTiming(event.timingCategory, event.timingValue);
           }

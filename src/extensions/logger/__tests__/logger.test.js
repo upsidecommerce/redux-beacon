@@ -1,11 +1,15 @@
-import { makeConsoleMock } from 'consolemock';
+import makeConsoleMock from 'consolemock';
 import { logger, getTimestamp } from '../';
+
+beforeAll(() => {
+  /* eslint-disable no-global-assign */
+  console = makeConsoleMock();
+});
 
 /* eslint-disable no-console */
 describe('logger()', () => {
-  beforeEach(() => {
-    /* eslint-disable no-global-assign */
-    console = makeConsoleMock();
+  afterEach(() => {
+    console.clearHistory();
   });
 
   Date.now = jest.fn(() => 1489105897006);
