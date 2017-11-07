@@ -33,9 +33,19 @@ function GoogleAnalytics(trackingId, GoogleAnalyticsTracker) {
           }
 
           if (Object.keys(options).length > 0) {
-            tracker.trackEvent(event.eventCategory, event.eventAction, options, event.customDimensionDict);
+            tracker.trackEventWithCustomDimensionValues(
+              event.eventCategory,
+              event.eventAction,
+              options,
+              event.customDimensionDict
+            );
           } else {
-            tracker.trackEvent(event.eventCategory, event.eventAction, {}, event.customDimensionDict);
+            tracker.trackEventWithCustomDimensionValues(
+              event.eventCategory,
+              event.eventAction,
+              {},
+              event.customDimensionDict
+            );
           }
           break;
         }
@@ -48,7 +58,7 @@ function GoogleAnalytics(trackingId, GoogleAnalyticsTracker) {
         case 'pageviewCustomDimensions': {
           tracker.trackScreenViewWithCustomDimensionValues(
             event.page,
-            event.customDimensionDict,
+            event.customDimensionDict
           );
           break;
         }
