@@ -92,6 +92,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	/* eslint-disable no-console */
+	var groups = [];
+	var hr = '-'.repeat(80); // 80 dashes row line
+
+	if (!console.group) {
+	  console.group = function logGroupStart(label) {
+	    groups.push(label);
+	    console.log('%c \nBEGIN GROUP: %c', hr, label);
+	  };
+	}
+	if (!console.groupEnd) {
+	  console.groupEnd = function logGroupEnd() {
+	    console.log('END GROUP: %c\n%c', groups.pop(), hr);
+	  };
+	}
+
 	function logEvents(events) {
 	  if (events.length > 1) {
 	    console.group('%c Events:', styles.label);

@@ -37,9 +37,9 @@ function GoogleAnalytics(trackingId, GoogleAnalyticsTracker) {
             }
 
             if (Object.keys(_options).length > 0) {
-              tracker.trackEvent(event.eventCategory, event.eventAction, _options, event.customDimensionDict);
+              tracker.trackEventWithCustomDimensionValues(event.eventCategory, event.eventAction, _options, event.customDimensionDict);
             } else {
-              tracker.trackEvent(event.eventCategory, event.eventAction, {}, event.customDimensionDict);
+              tracker.trackEventWithCustomDimensionValues(event.eventCategory, event.eventAction, {}, event.customDimensionDict);
             }
             break;
           }
